@@ -1,0 +1,16 @@
+1 - Kayzer Carrilho
+2 - CACHORRO
+3 - M
+4 - elodrado, casa carrilho, 553
+5 - 10.0 anos
+6 - 20.0 kg
+7 - bouder colie
+--------------------------------------------------
+1 - Apollo Carrilho
+2 - CACHORRO
+3 - M
+4 - eldorado, casa Wander, 555
+5 - 8.0 anos
+6 - 30.0 kg
+7 - bouder colie
+--------------------------------------------------
