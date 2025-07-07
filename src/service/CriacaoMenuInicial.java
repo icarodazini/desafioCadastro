@@ -19,13 +19,16 @@ public class CriacaoMenuInicial {
 
     public void processarOpcao(int opcao) {
         MapeamentoDeUmNovoPet mapeamentoDeUmNovoPet = new MapeamentoDeUmNovoPet();
+        BuscarDadosDoPetCadastrado buscarDadosDoPet = new BuscarDadosDoPetCadastrado();
         switch (opcao) {
             case 1 -> {
                 mapeamentoDeUmNovoPet.mapeandoAsPerguntas();
                 CadastrarUmNovoPet cadastrarUmNovoPet = new CadastrarUmNovoPet(mapeamentoDeUmNovoPet);
                 cadastrarUmNovoPet.cadastrarPetNoArquivo();
             }
-            case 2 -> System.out.println("Alterar os dados do pet cadastrado.");
+            case 2 -> {
+                buscarDadosDoPet.buscarDados();
+            }
             case 3 -> System.out.println("Deletar um pet cadastrado.");
             case 4 -> System.out.println("Listar todos os pets cadastrados.");
             case 5 -> System.out.println("Listar pets por algum critério (idade, nome, raça).");

@@ -1,6 +1,8 @@
 package service;
 
 import java.io.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class CadastrarUmNovoPet {
     private final MapeamentoDeUmNovoPet mapeamentoDeUmNovoPet;
@@ -10,12 +12,20 @@ public class CadastrarUmNovoPet {
     }
 
     public void cadastrarPetNoArquivo() {
-        File filePets = new File("C:\\Users\\icarodazini\\OneDrive\\Documentos\\Java\\desafioCadastro\\petsCadastrados\\filePets.txt");
+        LocalDateTime agora = LocalDateTime.now();
+        DateTimeFormatter formatando = DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmm");
+        String arquivoFormatado = agora.format(formatando);
 
-        try (FileWriter fw = new FileWriter(filePets, true);
+        String nomeDoPet = mapeamentoDeUmNovoPet.pet.getNomeCompleto().replace(" ", "").toUpperCase();
+
+        String nomeDoArquivo = arquivoFormatado + "-" + nomeDoPet + ".TXT";
+
+        File caminhoArquivoPet = new File("C:\\Users\\icarodazini\\OneDrive\\Documentos\\Java\\desafioCadastro\\petsCadastrados\\" + nomeDoArquivo);
+
+        try (FileWriter fw = new FileWriter(caminhoArquivoPet, true);
              BufferedWriter bw = new BufferedWriter(fw)) {
-            if (filePets.createNewFile()) {
-                System.out.println("Arquivo criado com sucesso: " + filePets.getName());
+            if (caminhoArquivoPet.createNewFile()) {
+                System.out.println("Arquivo criado com sucesso: " + caminhoArquivoPet.getName());
             }
             bw.write("1 - " + mapeamentoDeUmNovoPet.pet.getNomeCompleto());
             bw.newLine();
@@ -31,7 +41,6 @@ public class CadastrarUmNovoPet {
             bw.newLine();
             bw.write("7 - " + mapeamentoDeUmNovoPet.pet.getRaca());
             bw.newLine();
-            bw.write("--------------------------------------------------\n");
 
         } catch (IOException e) {
             e.printStackTrace();
