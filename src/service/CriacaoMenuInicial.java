@@ -26,12 +26,15 @@ public class CriacaoMenuInicial {
                 CadastrarUmNovoPet cadastrarUmNovoPet = new CadastrarUmNovoPet(mapeamentoDeUmNovoPet);
                 cadastrarUmNovoPet.cadastrarPetNoArquivo();
             }
-            case 2 -> {
+            case 2 -> System.out.println("Alterar os dados do pet cadastrado.");
+            case 3 -> System.out.println("Deletar um pet cadastrado.");
+            case 4 -> {
+                BuscarTodosPetsCadastrados buscarTodosPetsCadastrados = new BuscarTodosPetsCadastrados();
+                buscarTodosPetsCadastrados.buscarTodosPets();
+            }
+            case 5 -> {
                 buscarDadosDoPet.buscarDados();
             }
-            case 3 -> System.out.println("Deletar um pet cadastrado.");
-            case 4 -> System.out.println("Listar todos os pets cadastrados.");
-            case 5 -> System.out.println("Listar pets por algum critério (idade, nome, raça).");
             case 6 -> System.out.println("Saindo do sistema.");
             default -> System.out.println("Opção inválida! Por favor, escolha uma opção entre 1 e 6.");
         }
