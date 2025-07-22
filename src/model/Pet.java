@@ -22,17 +22,21 @@ public class Pet {
     public String setNomeCompleto(String nomeCompleto) {
         if (nomeCompleto != null && !nomeCompleto.trim().isEmpty() && nomeCompleto.contains(" ") && nomeCompleto.matches("[a-zA-Z\\s]+")) {
             this.nomeCompleto = nomeCompleto;
-        } else {
-            throw new IllegalArgumentException("Nome inválido. Por favor, insira um nome completo válido contendo apenas letras e espaços.");
+        } else if (nomeCompleto == null) {
+            this.nomeCompleto = naoInformado;
         }
-        return naoInformado;
+        throw new IllegalArgumentException("Nome inválido. Por favor, insira um nome completo válido contendo apenas letras e espaços.");
     }
+
 
     public Enum getTipoDoPet() {
         return tipoDoPet;
     }
 
     public void setTipoDoPet(Enum tipoDoPet) {
+        if (tipoDoPet == null) {
+            throw new IllegalArgumentException("Tipo do pet não pode ser nulo.");
+        }
         this.tipoDoPet = tipoDoPet;
     }
 
@@ -41,6 +45,9 @@ public class Pet {
     }
 
     public void setSexo(Enum sexo) {
+        if (sexo == null) {
+            throw new IllegalArgumentException("Sexo não pode ser nulo.");
+        }
         this.sexo = sexo;
     }
 
@@ -48,49 +55,51 @@ public class Pet {
         return idadeAproximada;
     }
 
-    public String setIdadeAproximada(String idadeAproximada) {
+    public void setIdadeAproximada(String idadeAproximada) {
         try {
             double idade = Double.parseDouble(idadeAproximada);
-            if (idade >= 0.1 && idade < 20) {
+            if (idade <= 20 && idade >= 0.1) {
                 this.idadeAproximada = idade;
-            } else {
-                throw new IllegalArgumentException("Idade aproximada deve estar entre 0.1 e 20 anos.");
+            } else if (idadeAproximada == null) {
+                this.raca = naoInformado;
             }
+            throw new IllegalArgumentException("Idade aproximada deve ser maior que 0 e menor ou igual a 20 anos. Por favor, tente novamente.");
+
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("Formato inválido para idade aproximada. Por favor, insira um número decimal.", e);
+            throw new IllegalArgumentException("Formato inválido para idade aproximada. Por favor, insira um número válido.", e);
         }
-        return naoInformado;
     }
 
     public double getPesoAproximado() {
         return pesoAproximado;
     }
 
-    public String setPesoAproximado(String pesoAproximado) {
+    public void setPesoAproximado(String pesoAproximado) {
         try {
             double peso = Double.parseDouble(pesoAproximado);
             if (peso < 60 && peso >= 0.5) {
                 this.pesoAproximado = peso;
-            } else {
-                throw new IllegalArgumentException("Peso aproximado não pode ser negativo ou maior que 60kg. Por favor, tente novamente.");
+            } else if (pesoAproximado == null) {
+                this.raca = naoInformado;
             }
+            throw new IllegalArgumentException("Peso aproximado deve ser maior que 0.5 e menor que 60 kg. Por favor, tente novamente.");
+
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Formato inválido para peso aproximado. Por favor, insira um número decimal.", e);
         }
-        return naoInformado;
     }
 
     public String getRaca() {
         return raca;
     }
 
-    public String setRaca(String raca) {
-        if (raca != null && raca.matches("[a-zA-Z\\s]+")) {
+    public void setRaca(String raca) {
+        if (raca != null && !raca.trim().isEmpty() && raca.matches("[a-zA-Z\\s]+")) {
             this.raca = raca;
-        } else {
-            throw new IllegalArgumentException("Raça inválida. Por favor, insira uma raça válida contendo apenas letras e espaços.");
+        } else if (raca == null) {
+            this.raca = naoInformado;
         }
-        return naoInformado;
+        throw new IllegalArgumentException("Raça inválida. Por favor, insira uma raça válida contendo apenas letras e espaços.");
     }
 
     public EnderecoPet getEnderecoPet() {
@@ -98,6 +107,9 @@ public class Pet {
     }
 
     public void setEnderecoPet(EnderecoPet enderecoPet) {
+        if (enderecoPet == null) {
+            throw new IllegalArgumentException("Endereço do pet não pode ser nulo.");
+        }
         this.enderecoPet = enderecoPet;
     }
 }

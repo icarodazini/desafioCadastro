@@ -18,24 +18,32 @@ public class CriacaoMenuInicial {
     }
 
     public void processarOpcao(int opcao) {
-        MapeamentoDeUmNovoPet mapeamentoDeUmNovoPet = new MapeamentoDeUmNovoPet();
-        BuscarDadosDoPetCadastrado buscarDadosDoPet = new BuscarDadosDoPetCadastrado();
+        MapeandoUmNovoPet mapeamentoDeUmNovoPet = new MapeandoUmNovoPet();
+        ListarPetsPorAlgumCriterio buscarDadosDoPet = new ListarPetsPorAlgumCriterio();
         switch (opcao) {
             case 1 -> {
                 mapeamentoDeUmNovoPet.mapeandoAsPerguntas();
                 CadastrarUmNovoPet cadastrarUmNovoPet = new CadastrarUmNovoPet(mapeamentoDeUmNovoPet);
                 cadastrarUmNovoPet.cadastrarPetNoArquivo();
             }
-            case 2 -> System.out.println("Alterar os dados do pet cadastrado.");
-            case 3 -> System.out.println("Deletar um pet cadastrado.");
+            case 2 -> {
+                AlterarDadosDoPetCadastrado alterarPetCadastrado = new AlterarDadosDoPetCadastrado();
+                alterarPetCadastrado.alterarPetNoArquivo();
+            }
+            case 3 -> {
+                DeletarUmPetCadastrado deletarUmPetCadastrado = new DeletarUmPetCadastrado();
+                deletarUmPetCadastrado.deletarPetCadastrado();
+            }
             case 4 -> {
-                BuscarTodosPetsCadastrados buscarTodosPetsCadastrados = new BuscarTodosPetsCadastrados();
+                ListarTodosOsPetsCadastrados buscarTodosPetsCadastrados = new ListarTodosOsPetsCadastrados();
                 buscarTodosPetsCadastrados.buscarTodosPets();
             }
             case 5 -> {
                 buscarDadosDoPet.buscarDados();
             }
-            case 6 -> System.out.println("Saindo do sistema.");
+            case 6 -> {
+                System.out.println("Saindo do sistema.");
+            }
             default -> System.out.println("Opção inválida! Por favor, escolha uma opção entre 1 e 6.");
         }
     }

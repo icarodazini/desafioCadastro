@@ -5,9 +5,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class CadastrarUmNovoPet {
-    private final MapeamentoDeUmNovoPet mapeamentoDeUmNovoPet;
+    private final MapeandoUmNovoPet mapeamentoDeUmNovoPet;
 
-    public CadastrarUmNovoPet(MapeamentoDeUmNovoPet mapeamentoDeUmNovoPet) {
+    public CadastrarUmNovoPet(MapeandoUmNovoPet mapeamentoDeUmNovoPet) {
         this.mapeamentoDeUmNovoPet = mapeamentoDeUmNovoPet;
     }
 

@@ -2,7 +2,7 @@ package service;
 
 import java.io.*;
 
-public class BuscarTodosPetsCadastrados {
+public class ListarTodosOsPetsCadastrados {
     public void buscarTodosPets() {
         File diretorio = new File("C:\\Users\\icarodazini\\OneDrive\\Documentos\\Java\\desafioCadastro\\petsCadastrados");
 
